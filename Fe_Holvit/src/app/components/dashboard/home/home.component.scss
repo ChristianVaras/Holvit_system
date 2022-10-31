@@ -1,0 +1,32 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10% 5%;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+
+.demo-inline-calendar-card {
+    width: 300px;
+}
+
+h1, h3 {
+    font-family: 'Titillium Web';
+}
+
+h1 {
+    color:  #F20024;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

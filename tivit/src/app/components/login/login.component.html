@@ -1,0 +1,29 @@
+<div class="header">
+    <img src="./assets/img/tivit_logo.png" width="25%">
+    <br>
+    <h2 class="greeting">Qué bueno es verte aquí</h2>
+    <h3>Estás accediendo a la plataforma de vacaciones y compensaciones de Tivit Perú.</h3>
+</div>
+<div class="body">
+    <div class="login">
+        <mat-spinner *ngIf="loading" diameter="50" class="spinner" color="warn"></mat-spinner>
+
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+            <h1>Login</h1>
+            <h5>Ingresa con tu cuenta personal de Tivit y una contraseña.</h5>
+            <mat-form-field class="entrance" appearance="fill" color="warn">
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="user">
+            </mat-form-field>
+            <mat-form-field class="entrance" appearance="fill" color="warn">
+                <mat-label>Contraseña</mat-label>
+                <input matInput autocomplete="off" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        <br>
+        <button type="submit" class="entrance button" mat-raised-button color="warn" [disabled]="form.invalid">Ingresar</button>
+        </form>
+    </div>    
+</div>

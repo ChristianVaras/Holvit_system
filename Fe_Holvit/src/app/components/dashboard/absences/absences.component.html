@@ -1,0 +1,27 @@
+<h1>Ausencias</h1>
+<p>¿Quieres registrar una ausencia?</p>
+<br>
+<form class ="container" [formGroup]="absencesForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione motivo</mat-label>
+    <mat-select formControlName="reason" required>
+      <mat-option *ngFor="let motivo of motivos" [value]="motivo.value">
+        {{motivo.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese la fecha de ausencia:</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="startdate" placeholder="Start date">
+      <input matEndDate formControlName="enddate" placeholder="End date">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/AAAA – MM/DD/AAAA</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+    
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" (click)="addAbsences()" color="warn">Ingresar ausencia</button>
+</form>

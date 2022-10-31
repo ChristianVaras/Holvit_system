@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "user": "ycruz",
+      "name": "Yohel Cruz",
+      "password": "holi123",
+      "typeUser": "admin",
+      "vacationsList": [
+        {
+          "reason": "vacaciones",
+          "startdate": "2022-10-26T05:00:00.000Z",
+          "enddate": "2022-10-31T05:00:00.000Z",
+          "comment": "Vacaciones de fin de año. ",
+          "id": 1
+        }
+      ],
+      "absencesList": [
+        {
+          "reason": "Licencia",
+          "startdate": "2022-11-10T05:00:00.000Z",
+          "enddate": "2022-11-12T05:00:00.000Z",
+          "day": "2022-10-30T07:33:13.981Z",
+          "username": null,
+          "id": 1
+        }
+      ]
+    }
+  ],
+  "absencesList": [
+    {
+      "reason": "Vacaciones",
+      "startdate": "2022-11-16T05:00:00.000Z",
+      "enddate": "2022-11-25T05:00:00.000Z",
+      "comment": "Vacaciones anuales.",
+      "day": "2022-10-31T16:53:26.108Z",
+      "state": 0,
+      "id": 1
+    },
+    {
+      "reason": "Permiso personal",
+      "startdate": "2022-11-23T05:00:00.000Z",
+      "enddate": "2022-11-24T05:00:00.000Z",
+      "day": "2022-10-31T16:53:53.939Z",
+      "comment": "",
+      "username": null,
+      "id": 2
+    }
+  ]
+}

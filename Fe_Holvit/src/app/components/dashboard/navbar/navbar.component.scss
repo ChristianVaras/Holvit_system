@@ -1,0 +1,41 @@
+.navbar {
+    background-color: #CAD2D8;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 40px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.icon-display {
+    transform: scale(2);
+    margin: auto;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0px;
+}
+
+#home-icon, #person-icon, #vacations-icon {
+    margin: 10px;
+}
+
+mat-icon {
+    margin: 5px;
+}
