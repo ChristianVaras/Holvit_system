@@ -10,7 +10,7 @@ namespace WebApi_Holvit.Models
         public Empleados Empleado { get; set; }
         [Display(Name = "Nombre de Empleado")]
         public int EmpleadoId { get; set; }
-        
+
         public string AusenciaId { get; set; }
         [Display(Name = "Fecha de Solicitud")]
         [DataType(DataType.Date)]
@@ -24,7 +24,7 @@ namespace WebApi_Holvit.Models
         [DataType(DataType.Date)]
         public DateTime FechaFinProg { get; set; }
         [Display(Name = "Fecha de Inicio")]
-        public DateTime FechaInicioReal{ get; set; }
+        public DateTime FechaInicioReal { get; set; }
         [Display(Name = "Fecha Final")]
         public DateTime FechaFinReal { get; set; }
         [Display(Name = "Estado de solicitud")]

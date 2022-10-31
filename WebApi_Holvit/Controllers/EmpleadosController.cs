@@ -1,43 +1,64 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Data;
+using System.Data.SqlClient;
+using WebApi_Holvit.Models;
 
 namespace WebApi_Holvit.Controllers
 {
-    [Route("api/Empleados")]
+    [Route("api/[controller]")]
     [ApiController]
     public class EmpleadosController : ControllerBase
     {
+        private readonly string cadenaSQL;
+
+        public EmpleadosController(IConfiguration config)
+        {
+            cadenaSQL = config.GetConnectionString("TivitConexion");
+        }
+
         // GET: api/Empleados
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Lista()
         {
-            return new string[] { "value1", "value2" };
-        }
+            List<Empleados> lista = new();
 
-        // GET api/<EmpleadosController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            try
+            {
+                using (var conexion = new SqlConnection(cadenaSQL))
+                {
 
-        // POST api/Empleados
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+                    conexion.Open();
+                    var cmd = new SqlCommand("uspDatosEmpleados", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-        // PUT api/<EmpleadosController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+                    using var rd = cmd.ExecuteReader();
 
-        // DELETE api/<EmpleadosController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                    while (rd.Read())
+                    {
+                        lista.Add(new Empleados()
+                        {
+                            Id = Convert.ToInt32(rd["Id"]),
+                            Nombre = rd["Nombre"].ToString(),
+                            Cargo = rd["Cargo"].ToString(),
+                            SuperiorId = Convert.ToInt32(rd["SuperiorId"]),
+                            Sede = Convert.ToInt32(rd["Sede"]),
+                            Rol = Convert.ToInt32(rd["Rol"]),
+                            Email = rd["Email"].ToString(),
+                            Estatus = Convert.ToBoolean(rd["Estatus"]),
+                            FechaIngreso = Convert.ToDateTime(rd["FechaIngreso"]),
+                            FechaNacimiento = Convert.ToDateTime(rd["FechaNacimiento"]),
+                            SaldoVacaciones = Convert.ToDecimal(rd["SaldoVacaciones"]),
+                        });
+                    }
+                }
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = lista });
+
+            }
+            catch (Exception error)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = error.Message, response = lista });
+            }
+         
         }
     }
 }

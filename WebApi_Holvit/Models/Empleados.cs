@@ -12,7 +12,7 @@
         public bool Estatus { get; set; }
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public DateTime DiasDeVacaciones { get; set; }
+        public decimal SaldoVacaciones { get; set; }
     }
 
 }
